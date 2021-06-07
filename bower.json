@@ -1,8 +1,8 @@
 {
   "name": "things-data-grid",
-  "version": "v1.0.1",
+  "version": "v1.0.2",
   "authors": [
-    "Hatio Lab. <heartyoh@hatiolab.com>"
+    "Shenzhen Weixun"
   ],
   "description": "Elements for providing things data grid.",
   "keywords": [
@@ -13,8 +13,6 @@
   "main": [
     "elements.html"
   ],
-  "license": "http://license.hatiolab.com/EULA",
-  "homepage": "http://elements.hatiolab.com/",
   "ignore": [
     "/.*",
     "/test/"

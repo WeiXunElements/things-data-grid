@@ -1,44 +1,44 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html" />
+<link rel="import" href="../paper-toolbar/paper-toolbar.html" />
 
-<link rel="import" href="../things-data-grid-behavior/things-tree-grid-config-behavior.html">
+<link rel="import" href="../things-data-grid-behavior/things-tree-grid-config-behavior.html" />
 
 <dom-module id="things-tree-grid">
   <template>
     <style>
       :host {
         display: block;
-        @apply(--layout-vertical);
-        @apply(--things-table-padding);
+        @apply (--layout-vertical);
+        @apply (--things-table-padding);
       }
       .grid-container {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
+        @apply (--layout-flex);
+        @apply (--layout-vertical);
       }
       .grid {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
+        @apply (--layout-flex);
+        @apply (--layout-vertical);
       }
       .grid::shadow div {
-        @apply(--layout-flex);
+        @apply (--layout-flex);
       }
       #paginator-container {
         height: 30px;
       }
       paper-toolbar {
-        background-color:var(--things-white-background-color);
+        background-color: var(--things-white-background-color);
         height: 50px;
-        @apply(--things-tight-padding);
+        @apply (--things-tight-padding);
       }
       paper-toolbar::shadow #bottomBar {
         height: 50px;
-        @apply(--layout-horizontal);
-        @apply(--layout-end-justified);
+        @apply (--layout-horizontal);
+        @apply (--layout-end-justified);
         padding: 0 10px;
       }
     </style>
@@ -50,7 +50,7 @@ Copyright © HatioLab Inc. All rights reserved.
       <!-- paginator -->
       <!--div id="paginator-container" hidden$="[[!paginatable]]"></div-->
     </div>
-  
+
     <paper-toolbar hidden$="{{!enableToolbar}}">
       <!-- button group -->
       <div class="bottom">
@@ -59,56 +59,54 @@ Copyright © HatioLab Inc. All rights reserved.
     </paper-toolbar>
   </template>
 
-	<script>
-		Polymer({
-			is: 'things-tree-grid',
+  <script>
+    Polymer({
+      is: 'things-tree-grid',
 
-			behaviors: [
-				Things.TreeGridConfigBehavior
-			],
-	
-			properties: {
-				/**
-				 * total data count
-				 */
-				totalCount: {
-					type: Number,
-					notify: true
-				},
+      behaviors: [Things.TreeGridConfigBehavior],
 
-				/**
-				 * if enable toolbar or not
-				 */
-				enableToolbar: {
-					type: Boolean,
-					value: false
-				}
-			},
+      properties: {
+        /**
+         * total data count
+         */
+        totalCount: {
+          type: Number,
+          notify: true,
+        },
 
-			listeners: {
-        'things-grid-configure-failed' : '_gridConfigureFailed'
-			},
+        /**
+         * if enable toolbar or not
+         */
+        enableToolbar: {
+          type: Boolean,
+          value: false,
+        },
+      },
+
+      listeners: {
+        'things-grid-configure-failed': '_gridConfigureFailed',
+      },
 
       /**
        * Grid 구성이 실패한 후 핸들러
-       * 
+       *
        * @param {Object} event things-grid-configure-failed
        */
-      _gridConfigureFailed: function(event) {
+      _gridConfigureFailed: function (event) {
         var title = Things.DataGlobal.t('text.grid_config_error');
         var text = event.detail.error;
-        this.openInfoMsg({ type : 'error', title : title, text : text });        
+        this.openInfoMsg({ type: 'error', title: title, text: text });
       },
 
       /**
        * Grid Container에서 Focus가 벗어난 경우
        *
-       * @param {Object} event on-mouse-out 이벤트 
+       * @param {Object} event on-mouse-out 이벤트
        */
       /*_onMouseout: function (event) {
         if(this.grid)
           this.grid.commit();
       }*/
-		});
-	</script>
+    });
+  </script>
 </dom-module>
